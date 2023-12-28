@@ -1,5 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const app = express();
+
+
+mongoose.connect('mongodb://localhost:27017/express-angular-auth', { useNewUrlParser: true, useUnifiedTopology: true });
+const User = mongoose.model('User', { username: String, password: String });
 
 // handling CORS
 app.use((req, res, next) => {
